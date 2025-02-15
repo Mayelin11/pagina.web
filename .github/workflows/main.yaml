@@ -7,7 +7,7 @@ on:
       - main  
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest                                    
     steps:
       - name: Check out the repository
         uses: actions/checkout@v2
@@ -21,6 +21,6 @@ jobs:
         run: npm install -g surge
 
       - name: Deploy to Surge
-        run: surge --project ./ --domain <your-domain>.surge.sh
+        run:  surge --project ./ --domain pagina.web.surge.sh 
         env:
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
