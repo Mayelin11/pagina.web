@@ -3,26 +3,23 @@ name: Deploy to Surge
 on:
   push:
     branches:
-      - main  
+      - main  # Se ejecuta cuando hagas push a main
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest                                    
-    
+    runs-on: ubuntu-latest
+
     steps:
-      - name: Check out the repository
-        uses: actions/checkout@v3  # Actualiza la versión a v3
+      - name: Clonar el repositorio
+        uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3  # Actualiza la versión a v3
+      - name: Instalar Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: '18'
 
-      - name: Install Surge
+      - name: Instalar Surge
         run: npm install -g surge
 
-      - name: Deploy to Surge
-        env:
-          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
-        run: surge --project ./ --domain pagina.web.surge.sh --token $SURGE_TOKEN
-
+      - name: Desplegar en Surge
+        run: surge ./ --domain tu-dominio.surge.sh --token ${{ secrets.SURGE_TOKEN }}
