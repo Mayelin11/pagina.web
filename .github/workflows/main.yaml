@@ -1,4 +1,3 @@
-
 name: Deploy to Surge
 
 on:
@@ -9,12 +8,13 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest                                    
+    
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3  # Actualiza la versión a v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3  # Actualiza la versión a v3
         with:
           node-version: '14'
 
@@ -24,4 +24,5 @@ jobs:
       - name: Deploy to Surge
         env:
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
-        run: surge --project ./ --domain pagina-web.surge.sh --token $SURGE_TOKEN
+        run: surge --project ./ --domain pagina.web.surge.sh --token $SURGE_TOKEN
+
